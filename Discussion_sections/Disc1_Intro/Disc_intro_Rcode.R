@@ -1,4 +1,7 @@
 # # B. The very basics
+## You should use this tutorial while referencing this notebook which shows both the code and output
+### https://github.com/corybaird/PLCY_610_public/blob/master/Discussion_sections/Disc1_Intro/Disc1_intro.ipynb
+
 
 # ## B.2 Running code
 # - The code you run in the top will display below in the console
@@ -32,7 +35,7 @@ print(new_string)
 new_string
 
 # 2. Import (save) excel data
-# 
+#
 # - The data should be in the same folder as you r-studio project
 # - Check the lower right coroner to see if a csv file is in the same folder
 # - You can also import from other folders which we will discuss below
@@ -49,11 +52,11 @@ df = read.csv('vote.csv')
 read.csv('vote.csv')
 
 
-## 2.2 Check to see our saved objects 
+## 2.2 Check to see our saved objects
 ls()
 
 # # 3. Basics of the dataframe
-# 
+#
 # ## 3.1 Display: first lines of the dataframe
 head(df, 3)
 
@@ -70,5 +73,3 @@ mean(df$age)
 
 #Shows standard deviation of age column
 sd(df$age)
-
-
