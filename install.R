@@ -1,5 +1,5 @@
 install.packages(c("dplyr",
                    "ggplot2",
-                   "foreign"
+                   "foreign",
                    "rmarkdown",
                    "caTools", "bitops", "rprojroot"))
