@@ -1,7 +1,13 @@
 # PLCY_610_public
-Materials for PLCY 610, an introductory statistics course as the University of Maryland
+Materials for PLCY 610, an introductory statistics course at the University of Maryland
 
-# Click the binder link to launch R and run the notebooks in the cloud!
+## About
+- The following contains discussion section lectures which introduces R and Stata software that will be necessary to complete the course problem sets.
+- The commands necessary to complete the problem sets are introduced in the folders Disc3_PS1 through Disc8_PS2.
+  - It is recommended that you also read through Disc1 and Disc2 as an intro to R and Stata
+
+
+## Click the binder link to launch R and run the notebooks in the cloud!
 
 ## Click this link to launch R-studio
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/corybaird/PLCY_610_public/master?urlpath=rstudio)
