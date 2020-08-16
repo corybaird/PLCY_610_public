@@ -5,5 +5,5 @@ install.packages(c("dplyr",
                     "knitr",
                     "broman",
                     "gridExtra",
-                    "lmtest"
+                    "lmtest",
                    "caTools", "bitops", "rprojroot"))
