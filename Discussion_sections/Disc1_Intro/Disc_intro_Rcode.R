@@ -42,14 +42,14 @@ new_string
 
 
 # ## 2.1 Read csv file
-df = read.csv('vote.csv')
+df = read.csv('https://raw.githubusercontent.com/corybaird/PLCY_610_public/master/Discussion_sections/Disc1_Intro/vote.csv')
 
 
 # ### 2.1.1 Common mistake
 # - If you do not set the name of the object it will read the file but not save!
 
 #Notice there is no = sign as we have in 2.1
-read.csv('vote.csv')
+read.csv('https://raw.githubusercontent.com/corybaird/PLCY_610_public/master/Discussion_sections/Disc1_Intro/vote.csv)
 
 
 ## 2.2 Check to see our saved objects
