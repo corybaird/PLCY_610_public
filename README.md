@@ -19,3 +19,13 @@ Materials for PLCY 610, an introductory statistics course at the University of M
 ## Files to ignore:
 - install.R
 - runtime.txt
+
+
+## Other resources I have created for reference:
+- [Stata tutorials](https://github.com/corybaird/STATA_basics)
+  - Stata code for basic commands
+
+- [Development economics notebooks](https://github.com/corybaird/Development_economics)
+  - Includes Stata, R, and Python code
+
+  
