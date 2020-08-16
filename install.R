@@ -4,4 +4,6 @@ install.packages(c("dplyr",
                    "rmarkdown",
                     "knitr",
                     "broman",
+                    "gridExtra",
+                    "lmtest"
                    "caTools", "bitops", "rprojroot"))
