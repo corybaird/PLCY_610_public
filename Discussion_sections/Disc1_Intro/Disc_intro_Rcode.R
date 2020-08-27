@@ -52,8 +52,9 @@ df = read.csv('https://raw.githubusercontent.com/corybaird/PLCY_610_public/maste
 read.csv('https://raw.githubusercontent.com/corybaird/PLCY_610_public/master/Discussion_sections/Disc1_Intro/vote.csv')
 
 
-## 2.2 Check to see our saved objects
-ls()
+##2.2 Read csv file in sub-folder¶
+df_arrests = read.csv("Sub_folder/arrests.csv")
+
 
 # # 3. Basics of the dataframe
 #
