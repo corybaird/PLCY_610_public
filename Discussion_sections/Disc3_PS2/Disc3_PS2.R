@@ -1,104 +1,88 @@
-# # Problem set 2
-# 
-# - Below are the functions necessary to complete problem set 2
-# - We will use an internal data set that is available in r-studio
-# 
-# ## A.1 Import internal data set
-
 #Imports internal data set
-data(mtcars)
+df = read.csv('demo.csv')
+head(df,3)
 
-## A.2 Import packages
 library(dplyr) #Data manipulation
 library(ggplot2) #Plotting
-
-# ### A.2.1 Common mistake!--Confirm you have installed libraries
-# - Usually you only have to do this once!
 
 #install.packages('dplyr')
 #install.packages('ggplot2')
 
-
-# 1. Scatterplot
-## 1.1 Scatter: plot function
-
-plot(mtcars$qsec, #x
-     mtcars$drat, #y
+plot(df$gdp, #x
+     df$polity2, #y
      xlab="1/4 mile time", 
      ylab="Rear axel ratio",
      main="Answer 2.C",
      pch=19 #Sets dot
     )
 
-## 1.2 ADVANCED FUNCTION--Scatter: ggplot library
-mtcars %>% 
+df %>% 
 ggplot(
-    aes(x =  qsec,y = drat)
+    aes(x = gdp, y = polity2)
 )+
 geom_point() + #Places points on chart
 xlab('1/4 mile time') + 
 ylab('Rear axel ratio') 
 
+cor(df$gdp, df$wealth)
 
-# 2. Correlation
-## 2.1. Correlation: cor function
-
-cor(mtcars$qsec, mtcars$drat)
-
-## 2.2 Correlation: DPLYR--select
-mtcars %>% 
-select(drat, qsec) %>% 
+df %>% 
+select(gdp, wealth) %>% 
 cor()
 
+autocracy_df = df[df$regime==1,]
+democracy_df = df[df$regime==3,]
 
-# 3. Histograms and filter
-## 3.1 Filter gear==3
-mtcars %>% 
-filter(gear==3)  %>% 
+autocracy_df %>% head(2) #This is how to use the head function with DPLYR
+
+#You can also use head(autocracy_df)
+
+df %>% 
+filter(regime==1)  %>% 
 head(2)
 
-## 3.2 Histograms
-### 3.2.1 Histogram: hist function
+#Same code as above we just add the new name and equals sign
+autocracy_df = 
+df %>% 
+filter(regime==1)  %>% 
+head(2)
 
 par(mfrow=c(1,2))
-hist(mtcars$vs, xlab="", main="Engine shape")
-hist(mtcars$gear, xlab="", main="Gears")
+hist(democracy_df$polity2, xlab="", main="TITLE")
+hist(autocracy_df$polity2, xlab="", main="TITLE")
 
-
-### 3.2.2 Histogram: ggplot2--extragrid libraries
 #install.packages('gridExtra')
 library(gridExtra)
 
-plot1 = mtcars %>% 
-ggplot(aes(x=vs)) +  # x = Column_name
+plot1 = democracy_df %>% 
+ggplot(aes(x=polity2)) +  # x = Column_name
 geom_histogram(color="black", fill="white", bins=2)
 
-plot2 = mtcars %>% 
-ggplot(aes(x=gear)) +  # x = Column_name
+plot2 = autocracy_df %>% 
+ggplot(aes(x=polity2)) +  # x = Column_name
 geom_histogram(color="black", fill="white", bins=3)
 
 grid.arrange(plot1, plot2, ncol=2)
 
-
-# 4. Two-way table
-## 4.1 Two-way table: table function
-
-freq_table = table(mtcars$gear, mtcars$vs) #(col, row)
+freq_table = table(df$wealth, df$regime) #(col, row)
 freq_table 
 
-### 4.1.1 Rename columns and rows
 rownames(freq_table) = c('1 Gear', '2 Gear', '3 Gear')
 
-colnames(freq_table) = c('Regular-engine', 'Vshape-engine')
+colnames(freq_table) = c('col1', 'col2', 'col3')
 
 freq_table
 
-## 4.2 Percentage of total observations
-
 prop.table(freq_table)
 
-## 4.3 Percentage of column observations
-
 prop.table(freq_table,2)
+
+df  %>% 
+select(regime, wealth) %>% table()
+
+df  %>% 
+select(regime, wealth) %>% 
+table() %>% 
+prop.table()
 
 
