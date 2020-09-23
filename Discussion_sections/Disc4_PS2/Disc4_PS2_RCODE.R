@@ -1,5 +1,20 @@
-# Problem set 2
+# PLEASE READ:
+# THE FOLLOWING CODE COVERS THE FUNCTIONS NECESSARY FOR PROBLEM 3 THAT I FAILED TO COVER IN THE VIDEO
 
+# Question 3
+# Creates 100 draws from the normal distribution
+draws = 100
+normal_data = rnorm(draws, mean =0, sd=1)
+
+# Samples 10 observations from this distribution
+sample_1 = sample(normal_data, 10)
+sample_2 = sample(normal_data, 100)
+
+# Create histogram
+hist(sample_1)
+
+
+# Problem set 2
 # The lecture notes for this code can be found at:
 # https://github.com/corybaird/PLCY_610_public/blob/master/Discussion_sections/Disc4_PS2/Disc4_PS2.ipynb
 
@@ -30,31 +45,39 @@ cor(df$gdp, df$wealth)
      
 autocracy_df = df[df$regime==1,]
 democracy_df = df[df$regime==3,]
-     
-     
+
+wealthy_df = df[df$wealth>1,]
+
+  
 ### 1.3.2 Plot two histograms
 
-par(mfrow=c(1,2))
-hist(democracy_df$polity2, xlab="", main="TITLE")
-hist(autocracy_df$polity2, xlab="", main="TITLE")
+par(mfrow=c(1,2)) #Print two histograms
+hist(democracy_df$polity2, xlab="", main="TITLE") # Graph 1
+hist(autocracy_df$polity2, xlab="", main="TITLE") #Graph
      
      
 ## 1.4 Problem 2f
      
 freq_table = table(df$wealth, df$regime) #(col, row)
-rownames(freq_table) = c('1 Gear', '2 Gear', '3 Gear')
-colnames(freq_table) = c('col1', 'col2', 'col3')
+rownames(freq_table) = c('Wealth 1', 'Wealth 2', '3 Gear')
+colnames(freq_table) = c('Regime 1', 'Regime 2', 'col3')
 freq_table 
      
      
 ## 1.5 Problem 2g
      
 prop.table(freq_table)
+
 prop.table(freq_table,2)
      
+
+
+
      
 # 2. DPLYR basics (OPTIONAL)
+# Step 1: Install 
 install.packages('dplyr')
+# Step 2: libary(dplyr)
 library(dplyr)
      
 ##  Why use libraries? The short answer: they are often easier to understand!
@@ -63,14 +86,19 @@ library(dplyr)
 cor(df$gdp, df$wealth)
      
 #Method 2
+# Shortcut pipe operator: command shift m
 df %>% 
   select(gdp, wealth) %>% 
   cor()
      
      
-## 2.1 Select 
+## 2.1 Select: is to select the columns
 df  %>% 
   select(gdp, wealth, country)  %>% head(3)
+
+df %>% 
+  select(contains('gdp')) %>% 
+  head(3)
      
 
 ## 2.2 Filter
@@ -78,19 +106,23 @@ df  %>%
 ### 2.2.1 Filter using =
 
 df  %>% 
-  filter(regime==1)  %>% head(3)
+  filter(regime==1)  %>% 
+  head(3)
      
 ### 2.2.2 Filter using < or >
      
 df  %>% 
-  filter(gdp>10000)  %>% head(3)
+  filter(gdp>10000) %>% 
+  head(3)
      
      
 ### 2.2.3 Filter using | or &
      
+# Or
 df  %>% 
   filter(gdp>17000 | gdp<500)  %>% head(3)
      
+# And
 df  %>% 
   filter(gdp>10000 & regime==2)  %>% head(3)
      
@@ -137,16 +169,23 @@ df  %>%
      
      
 # 3. World bank data (EXTREMELY OPTIONAL)
-     
+
+#install.packages('WDI')
+
 library(WDI)
      
 ## 3.1 Search for data
 
+#Function: WDIsearch()
 WDIsearch(string="poverty", field = "name") %>% 
   as_tibble() 
+
+
      
      
 ## 3.2 Download data
+
+#Function : WDI()
      
 poverty_df = WDI(indicator="1.0.HCount.2.5usd", country='MX',start=2005, end=2019)
 poverty_df
